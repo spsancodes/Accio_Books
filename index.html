@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Image Slider</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Image Slider -->
+<div class="slider-container">
+    <div class="slider">
+  
+        <div class="slide active"><img src="images2/1.png" alt="Slide 2"></div>
+        <div class="slide"><img src="images2/2.png" alt="Slide 1"></div>
+        <div class="slide"><img src="images2/3.jpg" alt="Slide 3"></div>
+        <div class="slide"><img src="images2/4.png" alt="Slide 4"></div>
+        <div class="slide"><img src="images2/5.png" alt="Slide 5"></div>
+        <div class="slide"><img src="images2/6.png" alt="Slide 6"></div>
+        <div class="slide"><img src="images2/7.png" alt="Slide 7"></div>
+        <div class="slide"><img src="images2/8.png" alt="Slide 10"></div>
+        
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+</div>
+
+<!-- Magical Title -->
+<div>
+    <h1 class="magic-title">Accio! Books</h1>
+</div>
+
+<div class="container mt-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-title">SUGGESTIONS</h5>
+                <img src="images/School Read GIF by Pudgy Penguins.gif" alt="GIF 1">
+                <a href="explore.html">explore suggestions tailored to ur taste</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-title">SHOP</h5>
+                <img src="images/Studying Back To School GIF by Pudgy Penguins.gif" alt="GIF 2">
+                <a href="discover.html">Go to the shop!!!</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-title">REVIEWS</h5>
+                <img src="images/Studying What Do You Want GIF by Pudgy Penguins.gif" alt="GIF 3">
+                <a href="shop.html">Check out the book reviews!!!</a>
+            </div>
+        </div>
+    </div>
+    <div class="history-section text-center text-light py-5" style="background: linear-gradient(to right, #1a1a1a, #000);">
+        <h2 class="magic-title" style="font-size: 40px;">Every Book Lover Loves a Bit of History...</h2>
+        <p style="max-width: 800px; margin: 20px auto; font-size: 18px; line-height: 1.6; color: #ddd;">
+            Once upon a time, in a world where stories were whispered through the pages of books, a small community of book lovers(like me) 
+            dreamed of a place where knowledge, magic, and tales converged. And thus, <span style="color: #DAA520; font-weight: bold;">Accio! Books</span> was born
+            a heaven for those who believe that every book holds a little bit of magic. From the rarest finds to beloved classics, our journey has been about more 
+            than just selling books it's about sharing stories, inspiring minds, and creating a legacy of readers who dream above and beyond the pages.
+        </p>
+        <button onclick="window.location.href='history.html'" class="btn btn-warning px-4 py-2" 
+            style="font-size: 20px; font-weight: bold; box-shadow: 0 0 15px rgba(218, 165, 32, 0.8);">
+            History!!!!
+        </button>
+    </div>
+    
+
+
+</div>
+<div class="container mt-4 text-center">
+        
+    <input type="text" id="searchBox" class="form-control search-box" placeholder="🔎 Search books...">
+        <div id="genreContainer" class="d-flex flex-wrap justify-content-center mt-3"></div>
+       
+    </div>
+
+<div class="container mt-5">
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/romance.jpg" alt="Romance" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+                <div class="genre-title">Romance</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/ActionAdventure.webp" alt="Action & Adventure" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Action & Adventure</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/MysteryThriller.jpg" alt="Mystery & Thriller" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Mystery & Thriller</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/BIographyHistory.webp" alt="Biographies & History" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Biographies & History</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/children.jpg" alt="Children" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Children</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/YoungAdult3.jpg" alt="Young Adult" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Young Adult</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/fantasy.avif" alt="Fantasy" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Fantasy</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/veryCoolGreek.jpg" alt="Historical Fiction" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Historical Fiction</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/Horror.jpg" alt="Horror" class="genre-img main-img">
+                <img src="images/Cat.png" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Horror</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/LiteraryFiction.jpg" alt="Literary fiction" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Literary fiction</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/Non fiction.jpg" alt="Non Fiction" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Non Fiction</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card genre-card">
+                <img src="images/ScienceFiction.jpg" alt="Science fiction" class="genre-img main-img">
+                <img src="images/Snail.jpg" alt="Romance Hover" class="genre-img hover-img">
+
+                <div class="genre-title">Science fiction</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mt-5" id="personalityQuiz">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="magic-title mb-4">Bookish Personality Quest ✨</h2>
+            <div class="quiz-container position-relative">
+                <!-- Progress Bar -->
+                <div class="progress mb-4" style="height: 8px; background: #2c2c2c;">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <!-- Quiz Steps -->
+                <div class="quiz-step active" data-step="1">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning">How do you choose a book?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    I research reviews and recommendations before deciding<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    I pick whatever looks interesting at the moment.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    I stick to my favorite genre and rarely stray.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    I choose books that make me feel deeply<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    I read to learn something new.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    I love surprises—random picks excite me!<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> How many books do you read at a time?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a. Just one—I like to focus.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b. One or two, depending on my mood.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c. At least three, I like variety!<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d. One, but I take my time to savor it<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e. Multiple, especially if they’re nonfiction<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f. As many as I can handle—I jump between books often.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> What’s your reaction when you finish a great book?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a.  I immediately start another book.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b. I think about it for a bit, then move on<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c. I search for similar books. <br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d. I cry, laugh, or reflect deeply.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e. I discuss it with others or take notes.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f. I reread parts I loved the most.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> What’s your reaction when you finish a great book?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a.  I immediately start another book.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b. I think about it for a bit, then move on<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c. I search for similar books. <br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d. I cry, laugh, or reflect deeply.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e. I discuss it with others or take notes.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f. I reread parts I loved the most.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> Which statement best describes your book-buying habits?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a.   I buy books faster than I can read them.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b.I buy books occasionally but don’t stress about owning them.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c.  prefer sticking to a few favorite authors. <br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d. I buy books that touch my soul.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e. I buy educational books or classics.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f. I love secondhand and rare finds!.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> What’s your go-to genre?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a.  I read everything I can get my hands on.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b. Fiction, but I’m open to different styles.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c. Fantasy, sci-fi, or mystery—I love adventure. <br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d. Romance, drama, or poetry—I read with my heart.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e.  Nonfiction, history, or biographies—I love learning.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f. Anything unconventional or experimental.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> WHow do you feel about rereading books?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a.I love it—it’s like visiting an old friend.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b.I love it—it’s like visiting an old friend.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c.I only reread my absolute favorites. <br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d.I reread emotional books when I need comfort.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e.I prefer reading something new each time.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f. I reread books if they offer a fresh perspective each time.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> What do you do if you don’t like a book?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a. I try to finish it anyway.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b. I give it a fair chance, but if it doesn’t hook me, I move on.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c.I switch to another book and return to it later. <br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d.If I connect emotionally, I’ll keep going.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e. I analyze why I don’t like it before stopping..<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f. I drop it and find something better!<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning"> How do you or how would you organize your bookshelf?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a. By genre, author, or a specific system.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b.No system—I just put them wherever they fit.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c.My favorites go in the most accessible spot.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d.Books that mean the most to me have a special place..<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e. Organized by subject or theme.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f.I mix and match—I like a bit of chaos!<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="quiz-step" data-step="2">
+                    <div class="question-box p-4 mb-4 rounded">
+                        <h3 class="text-warning">  What’s your ideal reading experience?</h3>
+                        <div class="row g-3 mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="1">
+                                    a. A long, uninterrupted reading session.<br>
+                                    <small>Classic Literature</small>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="2">
+                                    b.A quick read whenever I find time.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="3">
+                                    c. A book that transports me to another world.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    d.A story that makes me cry or feel deeply.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="4">
+                                    e.A book that challenges my thinking.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                            
+
+                            <div class="col-6">
+                                <button class="btn btn-dark w-100 option-btn" data-answer="5">
+                                    f.A book that surprises me in every chapter.<br>
+                                    <small>Epic Fantasy</small>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Add more steps following the same pattern -->
+                <!-- Step 2-5 would be similar with different questions -->
+
+                <!-- Final Result -->
+                <div class="quiz-result text-light" style="display: none;">
+                    <h3 class="text-warning mb-4">Your Bookish Identity Revealed! 🎉</h3>
+                    <div class="result-card p-4 rounded">
+                        <h4 class="mb-3">✨ The <span id="resultType">Mystical Page-Turner</span> ✨</h4>
+                        <p id="resultDescription" class="lead"></p>
+                        <button class="btn btn-warning mt-3" id="seeRecommendations">Show My Magic Books!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container my-5 sorting-hat-section">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6 text-center">
+            <div class="sorting-hat-container position-relative">
+                <!-- Sorting Hat Image with Animation -->
+                <img src="/images/Sorting-hat.jpg" class="sorting-hat" alt="Magical Sorting Hat">
+                
+                <!-- Flames Effect -->
+                <div class="flames"></div>
+                
+                <!-- Hat Speech Bubble -->
+                <div class="speech-bubble bg-dark text-warning p-4 rounded">
+                    <div class="typing-indicator"></div>
+                    <p id="hatQuestion" class="mb-0"></p>
+                </div>
+
+                <!-- Answer Buttons -->
+                <div class="hat-answers mt-4" id="hatAnswers"></div>
+
+                <!-- Result Display -->
+                <div id="houseResult" class="house-result text-light mt-5" style="display: none;">
+                    <h3 class="magic-title">The Hat Declares...</h3>
+                    <div class="house-card p-4 rounded">
+                        <h4 class="house-name mb-3">🏰 <span id="houseName">Pagefellows of the Ancient Quill</span></h4>
+                        <p id="houseDescription" class="lead"></p>
+                        <button class="btn btn-warning mt-3" id="revealBooks">Reveal My Tome Destiny!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    let index = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(i) {
+        slides[index].classList.remove('active'); // Remove active class from current slide
+        index = (i + slides.length) % slides.length;
+        slides[index].classList.add('active'); // Add active class to the new slide
+        document.querySelector('.slider').style.transform = `translateX(${-index * 100}vw)`;
+    }
+
+    function nextSlide() {
+        showSlide(index + 1);
+    }
+
+    function prevSlide() {
+        showSlide(index - 1);
+    }
+
+    setInterval(nextSlide, 6000); // Auto-slide every 4 seconds
+
+
+
+    const quizData = [
+    {
+        question: "Which magical creature would you bring to a library?",
+        answers: [
+            { text: "🦉 Wise Owl", tag: "classic" },
+            { text: "🐉 Fierce Dragon", tag: "fantasy" }
+        ]
+    },
+    // Add 4 more question objects
+];
+
+document.addEventListener("DOMContentLoaded", function () {
+    const steps = document.querySelectorAll(".quiz-step");
+    const progressBar = document.querySelector(".progress-bar");
+    let currentStepIndex = 0;
+
+    document.querySelectorAll(".option-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let currentStep = steps[currentStepIndex];
+            let nextStep = steps[currentStepIndex + 1];
+
+            if (nextStep) {
+                // Flip current step like turning a book page
+                currentStep.classList.add("flipping");
+
+                setTimeout(() => {
+                    currentStep.classList.remove("active", "flipping"); 
+                    nextStep.classList.add("active");
+
+                    // Update progress bar
+                    currentStepIndex++;
+                    let progress = ((currentStepIndex + 1) / steps.length) * 100;
+                    progressBar.style.width = progress + "%";
+                }, 800); // Matches animation duration
+            }
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const steps = document.querySelectorAll(".quiz-step"); // All questions
+    const progressBar = document.querySelector(".progress-bar"); // Progress bar element
+    let currentStepIndex = 0; // Track current step
+
+    document.querySelectorAll(".option-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let currentStep = steps[currentStepIndex];
+            let nextStep = steps[currentStepIndex + 1];
+
+            if (nextStep) {
+                // Hide current step
+                currentStep.style.transform = "rotateX(-90deg)";
+                currentStep.style.opacity = "0";
+
+                setTimeout(() => {
+                    currentStep.classList.remove("active"); 
+                    nextStep.classList.add("active");
+
+                    // Reset rotation for the next step
+                    nextStep.style.transform = "rotateX(-90deg)"; 
+                    setTimeout(() => {
+                        nextStep.style.transform = "rotateX(0)";
+                        nextStep.style.opacity = "1";
+                    }, 50);
+
+                    // Update progress bar
+                    currentStepIndex++;
+                    let progress = ((currentStepIndex + 1) / steps.length) * 100;
+                    progressBar.style.width = progress + "%";
+                }, 600); // Delay matches transition time
+            }
+        });
+    });
+});
+
+
+
+
+function showPersonalityResult() {
+    // Determine result based on userPreferences
+    const result = {
+        title: "The Mystical Page-Turner",
+        description: "Your perfect reads blend magic with deep characters! We recommend epic fantasies with intricate world-building and philosophical themes."
+    };
+
+    document.querySelector('.quiz-step').style.display = 'none';
+    document.querySelector('.quiz-result').style.display = 'block';
+    document.getElementById('resultType').textContent = result.title;
+    document.getElementById('resultDescription').textContent = result.description;
+}
+
+document.getElementById('seeRecommendations').addEventListener('click', () => {
+    // Implement recommendation logic
+});
+
+
+
+const sortingHatQuestions = [
+    {
+        question: "Ah... another curious mind! Tell me, which path calls to you when twilight falls?",
+        answers: [
+            { text: "📜 The Scholar's Tower lit by candlelight", value: "wisdom" },
+            { text: "⚔️ The Adventurer's Road winding beyond the horizon", value: "adventure" }
+        ]
+    },
+    {
+        question: "Your ideal reading companion is...",
+        answers: [
+            { 
+                text: "🧚 A mischievous paper fairy that annotates margins", 
+                value: "literary-fiction",
+                tooltip: "For deep thinkers and prose enthusiasts"
+            },
+            { 
+                text: "🐺 A wolf that howls plot twists", 
+                value: "thriller",
+                tooltip: "Keeps you on the edge of your reading nook"
+            }
+        ]
+    },
+    {
+        question: "Your perfect reading weather is...",
+        answers: [
+            { 
+                text: "⚡ Thunderstorms cracking the sky open", 
+                value: "gothic-horror",
+                tooltip: "Sets the mood for dark and stormy tales"
+            },
+            { 
+                text: "🌻 Sunlight dappling through ancient oaks", 
+                value: "contemporary",
+                tooltip: "For heartwarming modern stories"
+            }
+        ]
+    },
+    {
+        question: "Which magical ink would you choose?",
+        answers: [
+            { 
+                text: "🩸 Crimson that writes forbidden spells", 
+                value: "dark-fantasy",
+                tooltip: "For those drawn to morally complex tales"
+            },
+            { 
+                text: "💧 Water that shifts with the story's mood", 
+                value: "poetry",
+                tooltip: "For lovers of lyrical language and metaphor"
+            }
+        ]
+    }
+];
+
+// Initialize Question Index & House Points
+let currentQuestion = 0;
+let housePoints = {
+    "House of the Ancient Quill": 0,
+    "Order of Wandering Pages": 0,
+    "Scribes of the Silver Scroll": 0,
+    "Chroniclers of the Veil": 0
+};
+
+function askHatQuestion() {
+    if (currentQuestion >= sortingHatQuestions.length) {
+        revealHouse();
+        return;
+    }
+
+    const question = sortingHatQuestions[currentQuestion];
+    document.getElementById('hatQuestion').textContent = question.question;
+    
+    const answersDiv = document.getElementById('hatAnswers');
+    answersDiv.innerHTML = question.answers.map((answer, index) => `
+        <button class="btn btn-dark hat-answer" 
+                data-value="${answer.value}"
+                onclick="nextHatQuestion(${index})">
+            ${answer.text}
+        </button>
+    `).join('');
+}
+
+function nextHatQuestion(answerIndex) {
+    const answerValue = sortingHatQuestions[currentQuestion].answers[answerIndex].value;
+    
+    // Add points based on answer
+    switch(answerValue) {
+        case 'wisdom': 
+            housePoints["House of the Ancient Quill"] += 2;
+            housePoints["Scribes of the Silver Scroll"] += 1;
+            break;
+        case 'adventure':
+            housePoints["Order of Wandering Pages"] += 2;
+            housePoints["Chroniclers of the Veil"] += 1;
+            break;
+        case 'literary-fiction':
+            housePoints["House of the Ancient Quill"] += 2;
+            break;
+        case 'thriller':
+            housePoints["Order of Wandering Pages"] += 2;
+            break;
+        case 'gothic-horror':
+            housePoints["Chroniclers of the Veil"] += 2;
+            break;
+        case 'contemporary':
+            housePoints["Scribes of the Silver Scroll"] += 2;
+            break;
+        case 'dark-fantasy':
+            housePoints["Chroniclers of the Veil"] += 2;
+            break;
+        case 'poetry':
+            housePoints["Scribes of the Silver Scroll"] += 2;
+            break;
+    }
+
+    if(currentQuestion < sortingHatQuestions.length) {
+        askHatQuestion();
+    } else {
+        revealHouse();
+    }
+} 
+
+function revealHouse() {
+    const houses = Object.entries(housePoints);
+    const sortedHouses = houses.sort((a, b) => b[1] - a[1]);
+    const winningHouse = sortedHouses[0][0];
+    
+    document.getElementById('houseName').textContent = winningHouse;
+    document.getElementById('houseDescription').textContent = getHouseDescription(winningHouse);
+    document.querySelector('.sorting-hat').style.animation = 'hatDance 1s ease-out';
+    document.getElementById('houseResult').style.display = 'block';
+}
+
+function getHouseDescription(house) {
+    const descriptions = {
+        "House of the Ancient Quill": "Wise tome-keepers! Your perfect reads include historical epics and philosophical works that stand the test of time.",
+        "Order of Wandering Pages": "Brave explorers! You'll love epic adventures and travelogues that map unknown territories.",
+        // Add other house descriptions
+    };
+    return descriptions[house] || "A true bibliomancer! Your taste transcends simple categorization.";
+}
+
+// Initialize the experience
+document.querySelector('.sorting-hat').addEventListener('click', () => {
+    document.querySelector('.sorting-hat').style.transform = 'rotate(360deg) scale(1.2)';
+    setTimeout(askHatQuestion, 1000);
+});
+</script>
+
+</body>
+</html>

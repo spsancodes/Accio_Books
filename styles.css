@@ -1,0 +1,496 @@
+
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: black !important;
+            overflow-x: hidden;
+        }
+
+        /* Magical Title */
+        .magic-title {
+            font-family: 'Cinzel Decorative', serif;
+            text-align: center;
+            font-size: 48px;
+            color: #DAA520; /* Golden touch */
+            text-shadow: 3px 3px 15px rgba(255, 215, 0, 0.8);
+            margin: 50px;
+            animation: floatText 3s infinite ease-in-out;
+            
+            
+        }
+
+        /* Floating Animation for Title */
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Slider Container */
+        .slider-container {
+            width: 100vw;
+            height: 85vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Slider */
+        .slider {
+            display: flex;
+            width: 1100vw; /* Adjust if adding more slides */
+            height: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        /* Individual Slide */
+        .slide {
+            width: 100vw;
+            height: 100%;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit:cover;
+        }
+
+        /* Active Slide Effect */
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Navigation Buttons */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 24px;
+            z-index: 2;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        /* Glowing Hover Effect */
+        .prev:hover, .next:hover {
+            background: rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+            transform: scale(1.2);
+        }
+        /* Card Hover and Touch Effects */
+.card {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+/* Hover & Touch Effect */
+.card:hover, .card:active {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(218, 165, 32, 0.8);
+}
+
+.card:hover img, .card:active img {
+    transform: scale(1.1);
+}
+
+.card a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: #DAA520;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.card a:hover {
+    background: #b8860b;
+}
+
+.genre-card {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    text-align: center;
+    width: 100%;
+    height: 300px; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.genre-card .genre-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.genre-card .main-img {
+    opacity: 1;
+}
+
+.genre-card .hover-img {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+/* On Hover - Swap Images */
+.genre-card:hover .main-img {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.genre-card:hover .hover-img {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+        .genre-title {
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 100px;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 80%;
+            white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Ensures the text doesn't overflow */
+        }
+
+        .search-box {
+            transition: all 0.3s ease-in-out;
+            border-radius: 25px;
+            padding: 12px;
+        }
+        .search-box:focus {
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+        .search-box-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            padding: 5px;
+            background: white;
+        }
+        .search-icon, .voice-icon {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .quiz-container {
+    min-height: 650px;
+    perspective: 1200px;
+    position: relative;
+}
+
+.question-box {
+    background: rgba(40, 40, 40, 0.9);
+    border: 2px solid #DAA520;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-out;
+    transform: scale(1.05);
+   
+   
+}
+
+
+
+.option-btn {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #444 !important;
+    transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+    transform: scale(1.05) rotateY(10deg);
+    background: #333 !important;
+    box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+}
+
+.option-btn small {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.8em;
+    color: #DAA520;
+}
+
+.quiz-step {
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+    transform-origin: top; /* Makes it fold backward */
+    backface-visibility: hidden; /* Hides back face when flipped */
+    transition: transform 0.8s ease-in-out;
+}
+
+.quiz-step.flipping {
+    transform: rotateX(180deg);
+    opacity: 0;
+}
+
+.quiz-step.active {
+    opacity: 1;
+    transform: rotateX(0);
+    position: relative;
+    
+
+}
+
+.result-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #DAA520;
+    animation: reveal 1s ease-out;
+}
+
+@keyframes reveal {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+.sorting-hat-section {
+    background: url('/images/Old-paper-texture.jpg');
+    padding: 40px 0;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
+   
+}
+
+.sorting-hat {
+    width: 250px;
+    margin: -120px auto 30px;
+    filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
+    animation: floatHat 3s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes floatHat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.speech-bubble {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #DAA520;
+    animation: pulseBorder 2s infinite;
+}
+
+.speech-bubble:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    border: 15px solid transparent;
+    border-bottom-color: #DAA520;
+}
+
+.typing-indicator {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    background: rgba(218, 165, 32, 0.8);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    animation: typing 1s infinite;
+}
+
+@keyframes typing {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+.hat-answers .btn {
+    margin: 8px;
+    min-width: 200px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hat-answers .btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(218, 165, 32, 0.3), 
+        transparent);
+    transition: 0.5s;
+}
+
+.hat-answers .btn:hover:before {
+    left: 100%;
+}
+
+.house-card {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #DAA520;
+    transform: scale(0.9);
+    animation: houseReveal 1s forwards;
+}
+
+@keyframes houseReveal {
+    to { transform: scale(1); }
+}
+
+
+.flames {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,140,0,0.8) 10%, rgba(255,69,0,0.6) 40%, transparent 70%);
+    filter: blur(8px);
+    animation: flicker 0.2s infinite alternate, rise 2s linear infinite;
+    opacity: 0.8;
+}
+
+/* Flickering effect */
+@keyframes flicker {
+    0% { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Rising flame effect */
+@keyframes rise {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-30px); opacity: 0; }
+}
+
+/* Add extra flame layers for realism */
+.flames::before,
+.flames::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255,165,0,0.7) 10%, rgba(255,0,0,0.5) 50%, transparent 80%);
+    filter: blur(6px);
+    animation: flicker 0.15s infinite alternate, rise 2.5s linear infinite;
+}
+
+.flames::before {
+    left: -20px;
+    animation-duration: 2.3s;
+}
+
+.flames::after {
+    right: -20px;
+    animation-duration: 2.7s;
+}
+
+.typing-indicator {
+    display: inline-flex;
+    gap: 4px;
+}
+
+.typing-indicator::before,
+.typing-indicator::after,
+.typing-indicator span {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #ffc107; /* Golden color */
+    border-radius: 50%;
+    animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator::after {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-5px); opacity: 1; }
+}
+
+.speech-bubble {
+    position: relative;
+    display: inline-block;
+    padding: 15px 20px;
+    background: #222; /* Dark background */
+    color: #ffc107; /* Golden text */
+    border-radius: 12px;
+    max-width: 300px;
+}
+
+/* Triangle (Tail) */             
+.speech-bubble::after { 
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 12px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+}
+
+.quiz-step { display: none; }
+.quiz-step.active { display: block; }
+
+        
+
+        
+  
