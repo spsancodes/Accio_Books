@@ -749,34 +749,24 @@
 </div>
 
 
-
-<div class="container my-5 sorting-hat-section" id="sortingHatSection" style="display: none;">
+<div class="container sorting-hat-section" id="sortingHatSection" style="display: none;">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-6 text-center">
-            <div class="sorting-hat-container position-relative">
-                <!-- Sorting Hat Image -->
+            <div class="sorting-hat-container">
                 <img src="/images/Sorting-hat.jpg" class="sorting-hat" alt="Magical Sorting Hat">
-
-                <!-- Hat Speech Bubble -->
                 <div class="speech-bubble bg-dark text-warning p-4 rounded">
                     <p id="hatQuestion" class="mb-0"></p>
                 </div>
-
-                <!-- Book Recommendation Section -->
-                <div id="bookRecommendations" class="mt-4" style="display: none;">
-                    <h3 class="magic-title text-warning">Your Magical Reads Await...</h3>
-                    <div class="d-flex flex-wrap justify-content-center" id="bookList"></div>
-                </div>
-
-                <!-- Button to Reveal Books -->
-                <button class="btn btn-warning mt-3" id="revealBooks" style="display: none;">Reveal My Tome Destiny!</button>
+                <button class="btn btn-warning mt-3" id="revealBooks">Reveal My Tome Destiny!</button>
             </div>
         </div>
     </div>
+</div>
 
-
-        </div>
-    </div>
+<!-- Move Book Recommendations OUTSIDE Sorting Hat Section -->
+<div id="bookRecommendations" class="container mt-4" style="display: none;">
+    <h3 class="magic-title text-warning text-center">Your Magical Reads Await...</h3>
+    <div class="row d-flex flex-wrap justify-content-center" id="bookList"></div>
 </div>
 
 

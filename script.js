@@ -97,290 +97,246 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+    // ========== DOM ELEMENTS ==========
     const steps = document.querySelectorAll(".quiz-step");
     const progressBar = document.querySelector(".progress-bar");
     const resultContainer = document.querySelector(".quiz-result");
-    const overlay = document.createElement("div"); // Creates a dark overlay
+    const overlay = document.createElement("div");
     overlay.classList.add("quiz-overlay");
-    const cancelButton = document.getElementById('CANCEL');
-
     document.body.appendChild(overlay);
 
-    let currentStepIndex = 0;
-    let answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0,F:0 }; // Track answer selection
+    // Buttons
+    const cancelButton = document.getElementById('CANCEL');
+    const seeRecommendationsBtn = document.getElementById('seeRecommendations');
+    const revealBooksBtn = document.getElementById('revealBooks');
+    const goBackButton = document.getElementById('goBack');
 
+    // Sorting Hat Section
+    const sortingHatSection = document.getElementById('sortingHatSection');
+    const hatQuestionElement = document.getElementById('hatQuestion');
+    const bookRecommendations = document.getElementById('bookRecommendations');
+    const bookList = document.getElementById('bookList');
+
+    // ========== QUIZ STATE ==========
+    let currentStepIndex = 0;
+    let answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+
+    // ========== PERSONALITY DATA ==========
     const results = {
         A: {
             title: "The Bookworm",
-            description: "You devour books constantly and love a well-organized reading experience."
+            description: "You devour books constantly and love a well-organized reading experience.",
+            hatMessage: "Ahh... A true seeker of knowledge, are you?",
+            books: [
+                { title: "War and Peace", image: "/images2/war_and_peace.jpg" },
+                { title: "Crime and Punishment", image: "/images2/crime_and_punishment.jpg" },
+                { title: "The Brothers Karamazov", image: "/images2/brothers_karamazov.jpg" },
+                { title: "Moby Dick", image: "/images2/moby_dick.webp" },
+                { title: "Ulysses", image: "/images2/ulysses.jpg" }
+            ]
         },
         B: {
             title: "The Casual Reader",
-            description: "You enjoy books at your own pace and read whenever the mood strikes."
+            description: "You enjoy books at your own pace and read whenever the mood strikes.",
+            hatMessage: "A curious mind, but one that enjoys its own rhythm...",
+            books: [
+                { title: "The Alchemist", image: "/images2/alchemist.jpg" },
+                { title: "Pride and Prejudice", image: "/images2/pride_and_prejudice.jpg" },
+                { title: "The Rosie Project", image: "/images2/rosie_project.jpg" },
+                { title: "Norwegian Wood", image: "/images2/norwegian_wood.jpg" },
+                { title: "The Perks of Being a Wallflower", image: "/images2/perks_wallflower.jpg" }
+            ]
         },
+
+
+
         C: {
             title: "The Genre Explorer",
-            description: " You have favorite genres and stick to them, but you’re always looking for the next adventure."
+            description: "You have favorite genres and stick to them, but you're always looking for the next adventure.",
+            hatMessage: "A wanderer of genres, forever in search of adventure...",
+            books: [
+                { title: "The Way of Kings", image: "images2/way_of_kings.jpg" },
+                { title: "Dune", image: "images2/dune.jpg" },
+                { title: "The Name of the Wind", image: "images2/name_of_wind.jpg" },
+                { title: "The Hobbit", image: "images2/hobbit.jpg" },
+                { title: "The Lies of Locke Lamora", image: "images2/locke_lamora.jpg" }
+            ]
         },
         D: {
             title: "The Emotional Reader",
-            description: "You connect deeply with stories, cherishing the feelings they evoke."
+            description: "You connect deeply with stories, cherishing the feelings they evoke.",
+            hatMessage: "Your heart beats with the stories that move souls...",
+            books: [
+                { title: "The Book Thief", image: "images2/book_thief.webp" },
+                { title: "A Man Called Ove", image: "images2/man_called_ove.jpg" },
+                { title: "Me Before You", image: "images2/me_before_you.webp" },
+                { title: "The Nightingale", image: "images2/nightingale.jpg" },
+                { title: "Where the Crawdads Sing", image: "images2/crawdads_sing.jpg" }
+            ]
         },
         E: {
             title: "The Knowledge Seeker",
-            description: "You read to expand your understanding of the world and prefer thought-provoking books."
+            description: "You read to expand your understanding of the world and prefer thought-provoking books.",
+            hatMessage: "Wisdom and curiosity blend in your book choices...",
+            books: [
+                { title: "Sapiens", image: "images2/sapiens.jpg" },
+                { title: "Meditations", image: "images2/meditations.jpg" },
+                { title: "Thus Spoke Zarathustra", image: "images2/zarathustra.jpg" },
+                { title: "The Little Prince", image: "images2/little_prince.jpg" },
+                { title: "A Brief History of Time", image: "images2/brief_history_time.jpg" }
+            ]
         },
         F: {
             title: "The Adventurous Reader",
-            description: "You love surprises, experimental writing, and discovering hidden literary gems."
+            description: "You love surprises, experimental writing, and discovering hidden literary gems.",
+            hatMessage: "Ah! A daring reader, unafraid to embrace the unknown...",
+            books: [
+                { title: "Gone Girl", image: "images2/gone_girl.jpg" },
+                { title: "The Girl with the Dragon Tattoo", image: "images2/dragon_tattoo.jpg" },
+                { title: "The Silent Patient", image: "images2/silent_patient.jpg" },
+                { title: "The Da Vinci Code", image: "images2/da_vinci_code.jpg" },
+                { title: "Shutter Island", image: "images2/shutter_island.jpg" }
+            ]
         }
+        // ... (include other personality types with same structure)
     };
 
-    document.querySelectorAll(".option-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            let answerType = this.getAttribute("data-answer"); // Example: "A", "B", "C"
-            if (answerType) {
-                answerCounts[answerType]++; // Track selected answers
-            }
+    // ========== CORE FUNCTIONS ==========
+    function typeMessage(text, elementId, callback) {
+        const element = document.getElementById(elementId);
+        if (!element) {
+            console.error(`Element with ID "${elementId}" not found`);
+            return;
+        }
 
-            let currentStep = steps[currentStepIndex];
-            let nextStep = steps[currentStepIndex + 1];
+        element.innerHTML = "";
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                element.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 50);
+            } else if (callback) {
+                callback();
+            }
+        }
+
+        type();
+    }
+
+    function showPersonalityResult() {
+        const highestType = Object.keys(answerCounts).reduce((a, b) => 
+            answerCounts[a] > answerCounts[b] ? a : b
+        );
+        const result = results[highestType];
+
+        document.getElementById('resultType').textContent = result.title;
+        document.getElementById('resultDescription').textContent = result.description;
+
+        setTimeout(() => {
+            overlay.classList.add("show");
+            resultContainer.classList.add("show");
+        }, 800);
+    }
+
+    function showBookRecommendations() {
+        const personalityTitle = document.getElementById('resultType').textContent;
+        const personality = Object.keys(results).find(key => results[key].title === personalityTitle);
+        const result = results[personality];
+
+        // Hide result and show sorting hat
+        resultContainer.classList.remove("show");
+        sortingHatSection.style.display = "block";
+        sortingHatSection.scrollIntoView({ behavior: "smooth" });
+
+
+        console.log(result.hatMessage)
+
+        // Type the message then show reveal button
+        typeMessage(result.hatMessage, "hatQuestion", () => {
+            revealBooksBtn.style.display = "block";
+        });
+    }
+
+    document.getElementById("revealBooks").addEventListener("click", function () {
+        document.getElementById("sortingHatSection").style.display = "none"; // Hide sorting hat section
+        document.getElementById("bookRecommendations").style.display = "block"; // Show book list
+        displayBooks(); // Load books
+    });
+    
+    function displayBooks() {
+        const personalityTitle = document.getElementById('resultType').textContent;
+        const personality = Object.keys(results).find(key => results[key].title === personalityTitle);
+        const result = results[personality];
+    
+        bookList.innerHTML = result.books.map(book => `
+            <div class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+                <div class="card book-card">
+                    <img src="${book.image}" alt="${book.title}" class="book-cover">
+                    <div class="card-body">
+                        <h5 class="card-title">${book.title}</h5>
+                    </div>
+                </div>
+            </div>
+        `).join("");
+    }
+    
+    
+    
+    
+
+    // ========== EVENT LISTENERS ==========
+    // Option buttons
+    document.querySelectorAll(".option-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            const answerType = this.getAttribute("data-answer");
+            if (answerType) answerCounts[answerType]++;
+
+            const currentStep = steps[currentStepIndex];
+            const nextStep = steps[currentStepIndex + 1];
 
             if (nextStep) {
                 currentStep.classList.add("flipping");
                 setTimeout(() => {
                     currentStep.classList.remove("active");
                     nextStep.classList.add("active");
-
                     currentStepIndex++;
-                    let progress = ((currentStepIndex + 1) / steps.length) * 100;
-                    progressBar.style.width = progress + "%";
+                    progressBar.style.width = ((currentStepIndex + 1) / steps.length) * 100 + "%";
                 }, 800);
             } else {
                 showPersonalityResult();
             }
         });
+    });
 
-        cancelButton.addEventListener("click", function() {
-       
-        steps[currentStepIndex].classList.remove("active");  
-        currentStepIndex = 0; 
-        steps[currentStepIndex].classList.add("active");  
-
-        
+    // Cancel button
+    cancelButton.addEventListener("click", function() {
+        steps[currentStepIndex].classList.remove("active");
+        currentStepIndex = 0;
+        steps[currentStepIndex].classList.add("active");
         progressBar.style.width = "0%";
-
-        
-        
-
-        
         answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+        overlay.classList.remove("show");
+        resultContainer.classList.remove("show");
+        sortingHatSection.style.display = "none";
+        bookRecommendations.style.display = "none";
+        revealBooksBtn.style.display = "none";
     });
 
-    
-    
+    // See recommendations button
+    seeRecommendationsBtn.addEventListener("click", showBookRecommendations);
 
+    // Reveal books button
+    revealBooksBtn.addEventListener("click", displayBooks);
 
-    });
-
-
-    function typeMessage(text, elementId) {
-        console.log("typeMessage called with:", text, elementId); // Debugging line
-        let index = 0;
-        const element = document.getElementById(elementId);
-    
-        if (!element) {
-            console.error(`Element with ID "${elementId}" not found.`);
-            return;
-        }
-    
-        element.innerHTML = ""; // Clear previous text
-    
-        function type() {
-            if (index < text.length) {
-                element.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(type, 50); // Speed of typing effect
-            }
-        }
-    
-        type();
-    }
-
-    function showPersonalityResult() {
-    let highestType = Object.keys(answerCounts).reduce((a, b) => answerCounts[a] > answerCounts[b] ? a : b);
-    let result = results[highestType];
-
-    document.getElementById('resultType').textContent = result.title;
-    document.getElementById('resultDescription').textContent = result.description;
-
-    // Show result
-    setTimeout(() => {
+    // Go back button
+    goBackButton.addEventListener("click", function() {
+        sortingHatSection.style.display = "none";
         overlay.classList.add("show");
         resultContainer.classList.add("show");
-    }, 800);
-
-    // Set Sorting Hat messages based on personality
-    const sortingHatMessages = {
-        A: "Ahh... A true seeker of knowledge, are you?",
-        B: "A curious mind, but one that enjoys its own rhythm...",
-        C: "A wanderer of genres, forever in search of adventure...",
-        D: "Your heart beats with the stories that move souls...",
-        E: "Wisdom and curiosity blend in your book choices...",
-        F: "Ah! A daring reader, unafraid to embrace the unknown..."
-    };
-
-    document.getElementById('seeRecommendations').addEventListener('click', function () {
-        const sortingHatSection = document.getElementById('sortingHatSection');
-        if (sortingHatSection) {
-            sortingHatSection.style.display = 'block';
-            sortingHatSection.scrollIntoView({ behavior: "smooth" });
-
-
-            console.log("highestType:", highestType);
-console.log("Message:", sortingHatMessages[highestType]);
-
-
-
-            // Make the Sorting Hat "talk"
-            typeMessage(sortingHatMessages[highestType], "hatQuestion");
-        }
+        bookRecommendations.style.display = "none";
+        revealBooksBtn.style.display = "none";
     });
-}
-resultContainer.classList.remove("show");
-    });
-
-
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const steps = document.querySelectorAll(".quiz-step");
-        const progressBar = document.querySelector(".progress-bar");
-        const resultContainer = document.querySelector(".quiz-result");
-        const overlay = document.createElement("div"); // Dark overlay
-        overlay.classList.add("quiz-overlay");
-        document.body.appendChild(overlay);
-    
-        const cancelButton = document.getElementById("CANCEL");
-        const showMagicBooksButton = document.getElementById("seeRecommendations");
-        const goBackButton = document.getElementById("goBack");
-    
-        let currentStepIndex = 0;
-        let answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
-    
-        const results = {
-            A: { title: "The Bookworm", description: "You devour books constantly and love a well-organized reading experience." },
-            B: { title: "The Casual Reader", description: "You enjoy books at your own pace and read whenever the mood strikes." },
-            C: { title: "The Genre Explorer", description: "You have favorite genres and stick to them, but you’re always looking for the next adventure." },
-            D: { title: "The Emotional Reader", description: "You connect deeply with stories, cherishing the feelings they evoke." },
-            E: { title: "The Knowledge Seeker", description: "You read to expand your understanding of the world and prefer thought-provoking books." },
-            F: { title: "The Adventurous Reader", description: "You love surprises, experimental writing, and discovering hidden literary gems." }
-        };
-    
-        // Handle quiz button clicks
-        document.querySelectorAll(".option-btn").forEach(button => {
-            button.addEventListener("click", function () {
-                let answerType = this.getAttribute("data-answer");
-                if (answerType) answerCounts[answerType]++;
-    
-                let currentStep = steps[currentStepIndex];
-                let nextStep = steps[currentStepIndex + 1];
-    
-                if (nextStep) {
-                    currentStep.classList.add("flipping");
-                    setTimeout(() => {
-                        currentStep.classList.remove("active");
-                        nextStep.classList.add("active");
-    
-                        currentStepIndex++;
-                        progressBar.style.width = ((currentStepIndex + 1) / steps.length) * 100 + "%";
-                    }, 800);
-                } else {
-                    showPersonalityResult();
-                }
-            });
-        });
-
-
-
-        
-    
-        // Function to show result
-        function showPersonalityResult() {
-            let highestType = Object.keys(answerCounts).reduce((a, b) => answerCounts[a] > answerCounts[b] ? a : b);
-            let result = results[highestType];
-    
-            document.getElementById("resultType").textContent = result.title;
-            document.getElementById("resultDescription").textContent = result.description;
-    
-            setTimeout(() => {
-                overlay.classList.add("show");
-                resultContainer.classList.add("show");
-            }, 800);
-        }
-    
-        // Cancel button resets quiz
-        cancelButton.addEventListener("click", function () {
-            steps[currentStepIndex].classList.remove("active");
-            currentStepIndex = 0;
-            steps[currentStepIndex].classList.add("active");
-            progressBar.style.width = "0%";
-            answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
-        });
-    
-        // Typing effect function
-     
-        console.log(document.getElementById("resultType"));
-        console.log(personality)
-        alert("Personality detected: " + personality);
-        alert("Message found: " + (personalityData[personality]?.message || "Not found"));
-    
-        // Book recommendation section
-        const sortingHatSection = document.getElementById("sortingHatSection");
-        const sortingMessage = document.getElementById("sortingMessage");
-        const bookList = document.getElementById("bookRecommendations");
-    
-        const personalityData = {
-            "The Bookworm": { message: "Ah, a seeker of knowledge! I foresee endless shelves calling your name...", books: [{ title: "War and Peace", image: "war_and_peace.jpg" }, { title: "Crime and Punishment", image: "crime_and_punishment.jpg" }, { title: "The Brothers Karamazov", image: "brothers_karamazov.jpg" }, { title: "Moby Dick", image: "moby_dick.jpg" }, { title: "Ulysses", image: "ulysses.jpg" }] },
-            "The Casual Reader": { message: "Books are like old friends, and you enjoy meeting them at your own pace...", books: [{ title: "The Alchemist", image: "alchemist.jpg" }, { title: "Pride and Prejudice", image: "pride_and_prejudice.jpg" }, { title: "The Rosie Project", image: "rosie_project.jpg" }, { title: "Norwegian Wood", image: "norwegian_wood.jpg" }, { title: "The Perks of Being a Wallflower", image: "perks_wallflower.jpg" }] },
-            "The Genre Explorer": { message: "You traverse worlds, seeking adventures, mysteries, and tales untold!", books: [{ title: "The Way of Kings", image: "way_of_kings.jpg" }, { title: "Dune", image: "dune.jpg" }, { title: "The Name of the Wind", image: "name_of_wind.jpg" }, { title: "The Hobbit", image: "hobbit.jpg" }, { title: "The Lies of Locke Lamora", image: "locke_lamora.jpg" }] },
-            "The Emotional Reader": { message: "Stories that touch the soul are your treasures...", books: [{ title: "The Book Thief", image: "book_thief.jpg" }, { title: "A Man Called Ove", image: "man_called_ove.jpg" }, { title: "Me Before You", image: "me_before_you.jpg" }, { title: "The Nightingale", image: "nightingale.jpg" }, { title: "Where the Crawdads Sing", image: "crawdads_sing.jpg" }] },
-            "The Knowledge Seeker": { message: "You crave wisdom and deep thoughts that challenge your mind...", books: [{ title: "Sapiens", image: "sapiens.jpg" }, { title: "Meditations", image: "meditations.jpg" }, { title: "Thus Spoke Zarathustra", image: "zarathustra.jpg" }, { title: "The Little Prince", image: "little_prince.jpg" }, { title: "A Brief History of Time", image: "brief_history_time.jpg" }] },
-            "The Adventurous Reader": { message: "Twists, turns, and unpredictable tales excite your soul!", books: [{ title: "Gone Girl", image: "gone_girl.jpg" }, { title: "The Girl with the Dragon Tattoo", image: "dragon_tattoo.jpg" }, { title: "The Silent Patient", image: "silent_patient.jpg" }, { title: "The Da Vinci Code", image: "da_vinci_code.jpg" }, { title: "Shutter Island", image: "shutter_island.jpg" }] }
-        };
-    
-        // Show book recommendations
-        showMagicBooksButton.addEventListener("click", function () {
-            resultContainer.classList.remove("show");
-            sortingHatSection.style.display = "block";
-            sortingHatSection.scrollIntoView({ behavior: "smooth" });
-    
-            let personality = document.getElementById("resultType").textContent;
-            typeMessage(personalityData[personality].message, "sortingMessage");
-    
-            bookList.innerHTML = "";
-            personalityData[personality].books.forEach(book => {
-                const bookCard = document.createElement("div");
-                bookCard.classList.add("book-card");
-                bookCard.innerHTML = `<img src="images/${book.image}" alt="${book.title}"><p>${book.title}</p>`;
-                bookList.appendChild(bookCard);
-            });
-        });
-    
-        // Go back button
-        goBackButton.addEventListener("click", () => sortingHatSection.style.display = "none");
-    });
-    
-
-
-
-
-
-
-
-
-
+});
