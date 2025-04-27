@@ -12,10 +12,9 @@ Traditional library systems often lack engaging user interfaces and are mainly f
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Images](#Images)
 - [Setup](#setup)
-- [Limitations](#limitations)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
