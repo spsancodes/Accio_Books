@@ -39,39 +39,39 @@ The front end is built using HTML, CSS, and JavaScript, providing an engaging, v
 
 Below are some screenshots of the *ACCIO BOOKS* website:
 
-### First Impression
+## First Impression
 
 ![First](/images/1.png)
 
-### History (Didnt add the history.html yet😅)
+## History (Didnt add the history.html yet😅)
 
 ![History](/images/2.png)
 
-### Genre Cards
+## Genre Cards
 
 ![Genre Cards](/images/3.png)
 
-### Personality Quest
+## Personality Quest
 
 ![Personality Quest](/images/4.png)
 
-### Sorting hat (Cuz why not.?)
+## Sorting hat (Cuz why not.?)
 
 ![Sorting hat](/images/9.png)
 
-### Reveal
+## Reveal
 
 ![Reveal](/images/5.png)
 
-### Book Suggestions
+## Book Suggestions
 
 ![ Book Suggestions](/images/6.png)
 
-### delivery Form
+## delivery Form
 
 ![delivery Form](/images/7.png)
 
-### Signup Form
+## Signup Form
 
 ![Signup Form](/images/8.png)
 
