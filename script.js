@@ -36,16 +36,7 @@
 
 
 
-    const quizData = [
-    {
-        question: "Which magical creature would you bring to a library?",
-        answers: [
-            { text: "🦉 Wise Owl", tag: "classic" },
-            { text: "🐉 Fierce Dragon", tag: "fantasy" }
-        ]
-    },
     
-];
 
 document.addEventListener("DOMContentLoaded", function () {
     const steps = document.querySelectorAll(".quiz-step");
@@ -69,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     currentStepIndex++;
                     let progress = ((currentStepIndex + 1) / steps.length) * 100;
                     progressBar.style.width = progress + "%";
-                }, 800); // Matches animation duration
+                }, 800);
             }
         });
     });
@@ -213,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 { title: "Shutter Island", image: "images2/shutter_island.jpg" }
             ]
         }
-        // ... (include other personality types with same structure)
+        
     };
 
     // ========== CORE FUNCTIONS ==========

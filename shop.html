@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accio Books - Shop Details</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #222;
+            color: #f0e68c; /* Goldenrod-ish yellow */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            text-align: center;
+            color: #f0e68c;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            color: #ddd;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #444;
+            color: #eee;
+            box-sizing: border-box;
+        }
+        .error-message {
+            color: #ff6f61; /* A reddish color for errors */
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #f0e68c;
+            color: #222;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e0d67c;
+        }
+        /* Basic animation - you can enhance this with more complex keyframes */
+        .container {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Details for Your Magical Delivery!</h2>
+        <form id="shippingForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error-message" id="nameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="address">Street Address:</label>
+                <input type="text" id="address" name="address" required>
+                <div class="error-message" id="addressError"></div>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+                <div class="error-message" id="cityError"></div>
+            </div>
+            <div class="form-group">
+                <label for="state">State/Province:</label>
+                <input type="text" id="state" name="state">
+                <div class="error-message" id="stateError"></div>
+            </div>
+            <div class="form-group">
+                <label for="zip">Postal/Zip Code:</label>
+                <input type="text" id="zip" name="zip" required>
+                <div class="error-message" id="zipError"></div>
+            </div>
+            <button type="submit">Place Your Order!</button>
+        </form>
+    </div>
+    <div id="orderPlacedPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f0e68c; color: #222; padding: 30px; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); text-align: center; z-index: 1000;">
+        <img src="images2/logo.jpg" alt="Order Placed!" style="width: 80px; margin-bottom: 15px;">
+        <h3>Your Order Has Been Placed!</h3>
+        <p>Thank you for your magical purchase!</p>
+        <button id="closePopup" style="background-color: #333; color: #f0e68c; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; margin-top: 15px;">Close</button>
+    </div>
+
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+
+    <script>
+        const form = document.getElementById('shippingForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const addressInput = document.getElementById('address');
+        const cityInput = document.getElementById('city');
+        const zipInput = document.getElementById('zip');
+        const orderPlacedPopup = document.getElementById('orderPlacedPopup');
+        const closePopupButton = document.getElementById('closePopup');
+        const overlay = document.getElementById('overlay');
+
+        form.addEventListener('submit', function(event) {
+            let isValid = true;
+
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(msg => msg.textContent = '');
+
+            if (nameInput.value.trim() === '') {
+                document.getElementById('nameError').textContent = 'Please enter your full name.';
+                isValid = false;
+            } else if (/\d/.test(nameInput.value)) {
+                document.getElementById('nameError').textContent = 'Name should not contain numbers.';
+                isValid = false;
+            }
+
+            if (emailInput.value.trim() === '') {
+                document.getElementById('emailError').textContent = 'Please enter your email address.';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            if (addressInput.value.trim() === '') {
+                document.getElementById('addressError').textContent = 'Please enter your street address.';
+                isValid = false;
+            }
+
+            if (cityInput.value.trim() === '') {
+                document.getElementById('cityError').textContent = 'Please enter your city.';
+                isValid = false;
+            }
+
+            if (zipInput.value.trim() === '') {
+                document.getElementById('zipError').textContent = 'Please enter your postal/zip code.';
+                isValid = false;
+            } else if (!/^[0-9\s-]+$/.test(zipInput.value)) {
+                document.getElementById('zipError').textContent = 'Postal/Zip code should only contain numbers, spaces, or hyphens.';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if there are errors
+            } else {
+                event.preventDefault(); // Prevent default form submission
+                orderPlacedPopup.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+        });
+
+        closePopupButton.addEventListener('click', function() {
+            orderPlacedPopup.style.display = 'none';
+            overlay.style.display = 'none';
+            // Optionally, you can redirect the user or clear the form here
+        });
+    </script>
+</body>
+</body>
+</html>

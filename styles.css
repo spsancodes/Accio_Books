@@ -350,13 +350,15 @@
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
     width:1200px;
+    margin-bottom: 60px;
     
    
 }
 .sorting-hat-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* This centers all children horizontally */
+    align-items: center;
+     /* This centers all children horizontally */
 }
 
 
@@ -365,7 +367,7 @@
     width: 250px;
     margin: -120px auto 30px;
     filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
-    animation: floatHat 3s ease-in-out infinite;
+   
     cursor: pointer;
 }
 
@@ -394,7 +396,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    ;
     gap: 20px;
     padding: 20px;
 }
@@ -416,6 +418,7 @@
     display: none; /* Initially hidden */
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 
@@ -498,27 +501,9 @@ overflow: hidden;
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Triangle (Bubble Tail) */
-.speech-bubble::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 15px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
-}
 
-/* Typing Effect Animation */
-.typing-indicator {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #DAA520;
-    border-radius: 50%;
-    animation: typingBlink 1.5s infinite;
-}
+
+
 
 @keyframes typingBlink {
     0%, 100% { opacity: 0.3; }
@@ -530,6 +515,8 @@ overflow: hidden;
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
+
+
 
 
 
