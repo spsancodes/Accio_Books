@@ -10,6 +10,20 @@
         document.querySelector('.slider').style.transform = `translateX(${-index * 100}vw)`;
     }
 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const cards = document.querySelectorAll('.genre-card');
+        
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            const genre = card.dataset.genre;
+            window.location.href = `Books.html?genre=${encodeURIComponent(genre)}`;
+          });
+        });
+      });
+
+      
     function nextSlide() {
         showSlide(index + 1);
     }
@@ -125,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ========== PERSONALITY DATA ==========
     const results = {
         A: {
-            title: "The Bookworm",
+            title: "Bookworm",
             description: "You devour books constantly and love a well-organized reading experience.",
             hatMessage: "Ahh... A true seeker of knowledge, are you?",
             books: [
@@ -137,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
             ]
         },
         B: {
-            title: "The Casual Reader",
+            title: "Casual Reader",
             description: "You enjoy books at your own pace and read whenever the mood strikes.",
             hatMessage: "A curious mind, but one that enjoys its own rhythm...",
             books: [
@@ -152,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         C: {
-            title: "The Genre Explorer",
+            title: "Genre Explorer",
             description: "You have favorite genres and stick to them, but you're always looking for the next adventure.",
             hatMessage: "A wanderer of genres, forever in search of adventure...",
             books: [
@@ -164,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
             ]
         },
         D: {
-            title: "The Emotional Reader",
+            title: "Emotional Reader",
             description: "You connect deeply with stories, cherishing the feelings they evoke.",
             hatMessage: "Your heart beats with the stories that move souls...",
             books: [
@@ -176,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
             ]
         },
         E: {
-            title: "The Knowledge Seeker",
+            title: "Knowledge Seeker",
             description: "You read to expand your understanding of the world and prefer thought-provoking books.",
             hatMessage: "Wisdom and curiosity blend in your book choices...",
             books: [
@@ -188,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function() {
             ]
         },
         F: {
-            title: "The Adventurous Reader",
+            title: "Adventurous Reader",
             description: "You love surprises, experimental writing, and discovering hidden literary gems.",
             hatMessage: "Ah! A daring reader, unafraid to embrace the unknown...",
             books: [

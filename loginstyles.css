@@ -1,74 +1,113 @@
-/* Magical Parchment Background */
+/* loginstyles.css */
 body {
-    background: url('/images/Signupscrool3.png');
-    background-color: #f8f1e4;
+    background: url('https://source.unsplash.com/1350x900/?parchment,old-paper') no-repeat center center/cover, #fdf6e3;
+    background-size: cover;
     font-family: 'Cinzel', serif;
+    color: #4B3832;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.magic-sparkle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%), 
+                url('https://i.gifer.com/7efs.gif') center center no-repeat;
+    background-size: cover;
+    animation: sparkleAnimation 1s ease forwards;
+    z-index: 9999;
+    pointer-events: none; /* So user can't interact with it */
+    opacity: 0;
+}
+
+@keyframes sparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
+
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Scroll Container (Transparent) */
 .signup-scroll {
-    background: none; /* Remove solid background */
-    width: 450px;
-    padding: 20px;
-    position: relative;
+    background: url('https://www.transparenttextures.com/patterns/old-map.png'), #fdf6e3;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    border: 3px solid #d2b48c;
 }
 
-/* Rolled-up Top Effect */
 .scroll-top {
-    background: url('https://i.imgur.com/YV5Wm8R.png') no-repeat center;
-    background-size: contain;
-    height: 80px;
-    margin-top: -20px;
-}
-
-/* Magical Question */
-.magic-question {
+    margin-bottom: 20px;
     text-align: center;
+}
+
+.magic-question {
+    font-size: 1.2rem;
     font-style: italic;
-    color: #5a3825;
+    color: #6b4226;
 }
 
-/* Form Styling */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Transparent Input Fields */
-.glow-input {
-    width: 90%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: none;
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent */
-    border-radius: 5px;
-    font-size: 16px;
-    color: #3e2723; /* Darker text for readability */
-}
-
-/* Magical Glow Effect */
-.glow-input:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(255, 223, 186, 0.8);
-}
-
-/* Sign-in Buttons */
-.google-btn, .facebook-btn {
-    width: 90%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 5px;
+h2 {
+    margin-bottom: 20px;
+    color: #5c3d2e;
     font-weight: bold;
 }
 
+form {
+    margin-top: 15px;
+}
+
+.glow-input {
+    margin-bottom: 15px;
+    border: 2px solid #d2b48c;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.3s;
+    background: #fffaf0;
+}
+
+.glow-input:focus {
+    border-color: #b8860b;
+    box-shadow: 0 0 10px #b8860b;
+}
+
+.google-btn, .facebook-btn, .signup-btn {
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
 .google-btn {
-    background: white;
+    background: #fff;
+    color: #444;
     border: 1px solid #ccc;
+}
+
+.google-btn:hover {
+    background: #f0f0f0;
 }
 
 .facebook-btn {
@@ -76,21 +115,19 @@ form {
     color: white;
 }
 
-/* Signup Button */
-.signup-btn {
-    background: linear-gradient(45deg, #8b5e3c, #5a3825);
-    color: white;
-    width: 90%;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
+.facebook-btn:hover {
+    background: #2d4373;
 }
 
-/* Scroll Bottom Effect */
-.scroll-bottom {
-    background: url('https://i.imgur.com/YV5Wm8R.png') no-repeat center;
-    background-size: contain;
-    height: 60px;
-    margin-bottom: -20px;
+.signup-btn {
+    background: #b8860b;
+    color: white;
+}
+
+.signup-btn:hover {
+    background: #a97400;
+}
+
+.text-center {
+    text-align: center;
 }
