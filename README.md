@@ -82,4 +82,4 @@ Below are some screenshots of the *ACCIO BOOKS* website:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/accio-books.git
+   git clone https://github.com/spsancodes/Accio_Books.git
